@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: #f8f9fa;
+}
+
+/* Навигация */
+.navbar {
+    background: rgba(30, 30, 50, 0.95);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    color: white;
+    font-weight: 700;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+
+.nav-menu a:hover {
+    color: #667eea;
+}
+
+/* Hero с фоновым фото */
+.hero {
+    height: 80vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: #764ba2;
+    transform: translateY(-2px);
+}
+
+.btn-white {
+    background: white;
+    color: #667eea;
+}
+
+/* Контент */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    color: #667eea;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.content-block {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.content-block h2 {
+    color: #667eea;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.content-block h3 {
+    margin-top: 25px;
+    margin-bottom: 12px;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.content-block ul {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.content-block li {
+    margin-bottom: 10px;
+}
+
+.content-block a {
+    color: #667eea;
+    text-decoration: none;
+    border-bottom: 1px dashed #667eea;
+}
+
+.content-block a:hover {
+    border-bottom-style: solid;
+}
+
+/* Карточки */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+/* Секция с фоновым фото */
+.parallax-section {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 80px 20px;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.parallax-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(102, 126, 234, 0.85);
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.parallax-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Форма */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.form-container textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* Автор */
+.author-card {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    flex-wrap: wrap;
+}
+
+.author-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #667eea;
+}
+
+.author-info {
+    flex: 1;
+    min-width: 280px;
+}
+
+.author-info h2 {
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.author-info p {
+    margin-bottom: 12px;
+}
+
+/* Контакты */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.contact-icon {
+    font-size: 1.8rem;
+    width: 50px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: #1e1e32;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+footer a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .hero p { font-size: 1.1rem; }
+    .nav-menu { gap: 15px; font-size: 0.9rem; }
+    .content-block { padding: 25px; }
+    .author-card { flex-direction: column; text-align: center; }
+    .author-photo { width: 200px; height: 200px; }
+}
