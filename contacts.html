@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты — IT-Гайд</title>
+    <title>Контакты — IT-Гайд | Аслиддин Кудратов</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -31,21 +31,32 @@
 
     <div class="container">
         <div class="content-block">
-            <h2> Мои контакты</h2>
+            <h2>📞 Мои контакты</h2>
+            
+            <div class="contact-item">
+                <div class="contact-icon">👤</div>
+                <div>
+                    <strong>Автор</strong>
+                    <p>Аслиддин Кудратов</p>
+                </div>
+            </div>
+
             <div class="contact-item">
                 <div class="contact-icon">📧</div>
                 <div>
                     <strong>Email</strong>
-                    <p>your.email@example.com</p>
+                    <p><a href="mailto:asikgradcev@gmail.com" class="external-link">asikgradcev@gmail.com</a></p>
                 </div>
             </div>
+
             <div class="contact-item">
-                <div class="contact-icon">💬</div>
+                <div class="contact-icon">📱</div>
                 <div>
-                    <strong>Telegram</strong>
-                    <p><a href="https://t.me/your_username" target="_blank" class="external-link">@your_username</a></p>
+                    <strong>Телефон</strong>
+                    <p><a href="tel:+79778149306" class="external-link">+7 (977) 814-93-06</a></p>
                 </div>
             </div>
+
             <div class="contact-item">
                 <div class="contact-icon">🐙</div>
                 <div>
@@ -53,17 +64,10 @@
                     <p><a href="https://github.com/asikgradcev-web" target="_blank" class="external-link">github.com/asikgradcev-web</a></p>
                 </div>
             </div>
-            <div class="contact-item">
-                <div class="contact-icon"></div>
-                <div>
-                    <strong>LinkedIn</strong>
-                    <p><a href="https://linkedin.com" target="_blank" class="external-link">linkedin.com/in/your-profile</a></p>
-                </div>
-            </div>
         </div>
 
         <div class="content-block">
-            <h2>️ Напишите мне</h2>
+            <h2>✉️ Напишите мне</h2>
             <div class="form-container">
                 <form id="contact-form">
                     <input type="text" name="name" placeholder="Ваше имя" required>
@@ -78,7 +82,7 @@
 
     <footer>
         <p>© 2026 Гайд по стажировкам в IT · Учебный проект по веб-аналитике</p>
-        <p>Автор: <a href="author.html">Ваше Имя</a> · <a href="contacts.html">Связаться</a></p>
+        <p>Автор: <a href="author.html">Аслиддин Кудратов</a> · <a href="contacts.html">Связаться</a></p>
     </footer>
 
     <!-- Yandex.Metrika counter -->
@@ -100,6 +104,7 @@
     <!-- /Yandex.Metrika counter -->
 
     <script>
+        // Отслеживание отправки формы
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             document.getElementById('form-success').style.display = 'block';
@@ -109,6 +114,7 @@
             }
         });
 
+        // Отслеживание кликов по внешним ссылкам (email, телефон, github)
         document.querySelectorAll('.external-link').forEach(link => {
             link.addEventListener('click', function() {
                 if (typeof ym !== 'undefined') {
