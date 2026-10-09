@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — IT-Гайд</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🚀 IT-Стажировка</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="where.html">Где искать</a></li>
+                <li><a href="resume.html">Резюме</a></li>
+                <li><a href="interview.html">Собеседование</a></li>
+                <li><a href="author.html">Об авторе</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600');">
+        <div class="hero-content">
+            <h1>Контакты</h1>
+            <p>Свяжитесь со мной любым удобным способом</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <h2> Мои контакты</h2>
+            <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div>
+                    <strong>Email</strong>
+                    <p>your.email@example.com</p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">💬</div>
+                <div>
+                    <strong>Telegram</strong>
+                    <p><a href="https://t.me/your_username" target="_blank" class="external-link">@your_username</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">🐙</div>
+                <div>
+                    <strong>GitHub</strong>
+                    <p><a href="https://github.com/asikgradcev-web" target="_blank" class="external-link">github.com/asikgradcev-web</a></p>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon"></div>
+                <div>
+                    <strong>LinkedIn</strong>
+                    <p><a href="https://linkedin.com" target="_blank" class="external-link">linkedin.com/in/your-profile</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>️ Напишите мне</h2>
+            <div class="form-container">
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                    <input type="email" name="email" placeholder="Ваш email" required>
+                    <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+                    <button type="submit" class="btn" style="width: 100%;">Отправить сообщение</button>
+                </form>
+                <p id="form-success" style="display:none; margin-top:20px; color: green; font-weight:600;">✅ Сообщение отправлено! Я отвечу вам в ближайшее время.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Гайд по стажировкам в IT · Учебный проект по веб-аналитике</p>
+        <p>Автор: <a href="author.html">Ваше Имя</a> · <a href="contacts.html">Связаться</a></p>
+    </footer>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(XXXXXXXX, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            document.getElementById('form-success').style.display = 'block';
+            this.style.display = 'none';
+            if (typeof ym !== 'undefined') {
+                ym(XXXXXXXX, 'reachGoal', 'contact_form_submit');
+            }
+        });
+
+        document.querySelectorAll('.external-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (typeof ym !== 'undefined') {
+                    ym(XXXXXXXX, 'reachGoal', 'external_link_click');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
