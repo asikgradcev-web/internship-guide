@@ -1,46 +1,66 @@
-* {
+
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+
+                * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #2c3e50;
-    background: #f8f9fa;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
-/* Навигация */
+/* Навигация с эффектом стекла */
 .navbar {
-    background: rgba(30, 30, 50, 0.95);
-    padding: 15px 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .nav-container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 30px;
 }
 
 .logo {
     color: white;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 25px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
@@ -48,17 +68,34 @@ body {
     color: white;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
-    font-size: 0.95rem;
+    transition: all 0.3s;
+    font-size: 1rem;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
 }
 
 .nav-menu a:hover {
-    color: #667eea;
+    transform: translateY(-2px);
 }
 
-/* Hero с фоновым фото */
+/* Hero с анимацией */
 .hero {
-    height: 80vh;
+    height: 85vh;
     min-height: 500px;
     background-size: cover;
     background-position: center;
@@ -69,150 +106,244 @@ body {
     text-align: center;
     color: white;
     position: relative;
+    overflow: hidden;
 }
 
 .hero::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 0.9; }
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 900px;
     padding: 20px;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    font-weight: 800;
+    text-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+    letter-spacing: -1px;
 }
 
 .hero p {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    font-size: 1.5rem;
+    margin-bottom: 35px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    font-weight: 300;
 }
 
-/* Кнопки */
+/* Кнопки с эффектами */
 .btn {
     display: inline-block;
-    background: #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 14px 32px;
-    border-radius: 8px;
+    padding: 16px 40px;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s;
     border: none;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn:hover {
-    background: #764ba2;
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
 }
 
 .btn-white {
     background: white;
     color: #667eea;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+}
+
+.btn-white:hover {
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.5);
 }
 
 /* Контент */
 .container {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 60px 20px;
+    padding: 80px 30px;
 }
 
 .section-title {
-    font-size: 2.2rem;
-    color: #667eea;
-    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 50px;
     text-align: center;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
 }
 
 .content-block {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s;
+}
+
+.content-block:hover {
+    transform: translateY(-5px);
 }
 
 .content-block h2 {
     color: #667eea;
-    margin-bottom: 20px;
-    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 .content-block h3 {
-    margin-top: 25px;
-    margin-bottom: 12px;
+    margin-top: 30px;
+    margin-bottom: 15px;
     color: #2c3e50;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
 .content-block ul {
-    margin-left: 25px;
-    margin-bottom: 15px;
+    margin-left: 30px;
+    margin-bottom: 20px;
 }
 
 .content-block li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
 }
 
 .content-block a {
     color: #667eea;
     text-decoration: none;
-    border-bottom: 1px dashed #667eea;
+    border-bottom: 2px dashed #667eea;
+    transition: all 0.3s;
+    font-weight: 500;
 }
 
 .content-block a:hover {
     border-bottom-style: solid;
+    color: #764ba2;
 }
 
-/* Карточки */
+/* Карточки с 3D эффектом */
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
 }
 
 .card {
     background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+}
+
+.card:hover::before {
+    transform: scaleX(1);
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.2);
 }
 
 .card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .card h3 {
     color: #667eea;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
-/* Секция с фоновым фото */
+.card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* Секция с параллаксом */
 .parallax-section {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    padding: 80px 20px;
+    padding: 100px 30px;
     color: white;
     text-align: center;
     position: relative;
@@ -221,122 +352,606 @@ body {
 .parallax-section::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(102, 126, 234, 0.85);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
 }
 
 .parallax-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
+    animation: fadeInUp 1s ease;
 }
 
 .parallax-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    margin-bottom: 25px;
+    font-weight: 800;
 }
 
 /* Форма */
 .form-container {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
 .form-container input,
 .form-container textarea {
     width: 100%;
-    padding: 14px 16px;
+    padding: 16px 20px;
     border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
-    margin-bottom: 15px;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
     font-family: inherit;
-    transition: border-color 0.3s;
+    transition: all 0.3s;
+    background: white;
 }
 
 .form-container input:focus,
 .form-container textarea:focus {
     outline: none;
     border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
 }
 
 .form-container textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 150px;
 }
 
 /* Автор */
 .author-card {
     display: flex;
-    gap: 40px;
+    gap: 50px;
     align-items: center;
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
     flex-wrap: wrap;
+    backdrop-filter: blur(10px);
 }
 
 .author-photo {
-    width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 280px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid #667eea;
+    border: 6px solid #667eea;
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+    transition: transform 0.3s;
+}
+
+.author-photo:hover {
+    transform: scale(1.05) rotate(5deg);
 }
 
 .author-info {
     flex: 1;
-    min-width: 280px;
+    min-width: 300px;
 }
 
 .author-info h2 {
     color: #667eea;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+    font-weight: 700;
 }
 
 .author-info p {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
 /* Контакты */
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 20px;
+    gap: 20px;
+    padding: 25px;
     background: white;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+}
+
+.contact-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
 .contact-icon {
-    font-size: 1.8rem;
-    width: 50px;
-    text-align: center;
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    color: white;
 }
 
 /* Footer */
 footer {
-    background: #1e1e32;
+    background: rgba(30, 30, 50, 0.95);
     color: white;
     text-align: center;
-    padding: 30px 20px;
+    padding: 40px 30px;
+    backdrop-filter: blur(10px);
 }
 
 footer a {
     color: #667eea;
     text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #764ba2;
 }
 
 /* Адаптив */
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    .hero p { font-size: 1.1rem; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1.2rem; }
     .nav-menu { gap: 15px; font-size: 0.9rem; }
-    .content-block { padding: 25px; }
+    .content-block { padding: 30px; }
     .author-card { flex-direction: column; text-align: center; }
-    .author-photo { width: 200px; height: 200px; }
+    .author-photo { width: 220px; height: 220px; }
+    .cards { grid-template-columns: 1fr; }
+    .container { padding: 40px 20px; }
 }
+
+
+              </style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гайд: Как найти стажировку в IT | Аслиддин Кудратов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"> IT-Стажировка</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="where.html">Где искать</a></li>
+                <li><a href="resume.html">Резюме</a></li>
+                <li><a href="interview.html">Собеседование</a></li>
+                <li><a href="author.html">Об авторе</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600');">
+        <div class="hero-content">
+            <h1>Как студенту найти первую стажировку в IT</h1>
+            <p>Пошаговый гайд от тех, кто уже прошел этот путь</p>
+            <a href="where.html" class="btn btn-white">Начать читать</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Что вы узнаете из этого гайда</h2>
+        <div class="cards">
+            <div class="card">
+                <div class="card-icon">🔍</div>
+                <h3>Где искать</h3>
+                <p>Лучшие площадки, Telegram-каналы и сайты компаний для поиска стажировок</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📄</div>
+                <h3>Резюме без опыта</h3>
+                <p>Как составить сильное резюме, если у вас еще нет коммерческого опыта</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">💼</div>
+                <h3>Собеседование</h3>
+                <p>Подготовка к техническому интервью и типовые вопросы работодателей</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600');">
+        <div class="parallax-content">
+            <h2>Готовы начать карьеру в IT?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 35px;">Следуйте нашему гайду и получите первую стажировку мечты</p>
+            <a href="where.html" class="btn btn-white">Перейти к гайду</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Гайд по стажировкам в IT · Учебный проект по веб-аналитике</p>
+        <p>Автор: <a href="author.html">Аслиддин Кудратов</a> · <a href="contacts.html">Связаться</a></p>
+    </footer>
+
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(12345678, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/12345678" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <script>
+        document.querySelectorAll('.nav-menu a, .btn').forEach(link => {
+            link.addEventListener('click', function() {
+                if (typeof ym !== 'undefined') {
+                    ym(12345678, 'reachGoal', 'page_navigation');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Где искать стажировки — IT-Гайд</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🚀 IT-Стажировка</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="where.html">Где искать</a></li>
+                <li><a href="resume.html">Резюме</a></li>
+                <li><a href="interview.html">Собеседование</a></li>
+                <li><a href="author.html">Об авторе</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1600');">
+        <div class="hero-content">
+            <h1>Где искать стажировки?</h1>
+            <p>Лучшие площадки и каналы для поиска первой работы в IT</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <h2> Job-борды и платформы</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">💼</div>
+                    <h3>Хабр Карьера</h3>
+                    <p><a href="https://career.habr.com" target="_blank" class="external-link">career.habr.com</a></p>
+                    <p>Фильтр «Стажировка» + «Без опыта». Много вакансий для junior-разработчиков.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"></div>
+                    <h3>HeadHunter</h3>
+                    <p><a href="https://hh.ru" target="_blank" class="external-link">hh.ru</a></p>
+                    <p>Крупнейший сайт вакансий в СНГ. Используйте фильтр «Начало карьеры».</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://linkedin.com" target="_blank" class="external-link">linkedin.com</a></p>
+                    <p>Заполните профиль на английском, добавьте хэштеги #internship #junior.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>📱 Telegram-каналы</h2>
+            <ul>
+                <li><a href="https://t.me/junior_it_jobs" target="_blank" class="external-link">@junior_it_jobs</a> — вакансии для новичков</li>
+                <li><a href="https://t.me/student_jobs" target="_blank" class="external-link">@student_jobs</a> — стажировки для студентов</li>
+                <li><a href="https://t.me/it_vacancies" target="_blank" class="external-link">@it_vacancies</a> — общая лента IT-вакансий</li>
+                <li><a href="https://t.me/findjob_it" target="_blank" class="external-link">@findjob_it</a> — поиск работы в IT</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>🏢 Сайты крупных компаний</h2>
+            <p>У всех крупных IT-компаний есть собственные программы стажировок:</p>
+            <ul>
+                <li><a href="https://yandex.ru/jobs" target="_blank" class="external-link">Яндекс</a> — Яндекс.Стажировки</li>
+                <li><a href="https://team.vk.company" target="_blank" class="external-link">VK</a> — VK Education</li>
+                <li><a href="https://www.tinkoff.ru/career" target="_blank" class="external-link">Тинькофф</a> — Тинькофф Образование</li>
+                <li><a href="https://sberseasons.com" target="_blank" class="external-link">Сбер</a> — СберСезоны</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>🤝 Нетворкинг</h2>
+            <p>Не забывайте про живое общение:</p>
+            <ul>
+                <li><strong>Хакатоны</strong> — VK Cup, Яндекс Хакатоны, СберХак</li>
+                <li><strong>Митапы и конференции</strong> — HighLoad++, HolyJS, PyCon</li>
+                <li><strong>Университетские карьерные дни</strong> — дни карьеры в вашем вузе</li>
+                <li><strong>Open Source</strong> — вклад в открытые проекты на GitHub</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Гайд по стажировкам в IT · Учебный проект по веб-аналитике</p>
+        <p>Автор: <a href="author.html">Аслиддин Кудратов</a> · <a href="contacts.html">Связаться</a></p>
+    </footer>
+
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(12345678, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/12345678" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <script>
+        document.querySelectorAll('.external-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (typeof ym !== 'undefined') {
+                    ym(12345678, 'reachGoal', 'external_link_click');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как составить резюме — IT-Гайд</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🚀 IT-Стажировка</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="where.html">Где искать</a></li>
+                <li><a href="resume.html">Резюме</a></li>
+                <li><a href="interview.html">Собеседование</a></li>
+                <li><a href="author.html">Об авторе</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1600');">
+        <div class="hero-content">
+            <h1>Как составить резюме без опыта?</h1>
+            <p>Структура идеального резюме студента</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <h2>🎓 1. Образование</h2>
+            <p>Укажите ваш вуз, факультет и курс. Обязательно добавьте <strong>релевантные предметы</strong>:</p>
+            <ul>
+                <li>Алгоритмы и структуры данных</li>
+                <li>Базы данных</li>
+                <li>Веб-разработка</li>
+                <li>Объектно-ориентированное программирование</li>
+                <li>Операционные системы</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>🛠️ 2. Пет-проекты (самое важное!)</h2>
+            <p>Даже если у вас нет коммерческого опыта, учебные проекты — это уже опыт. Сделайте 2–3 проекта и выложите на GitHub:</p>
+            <ul>
+                <li><strong>Калькулятор</strong> — показывает знание основ языка</li>
+                <li><strong>TODO-лист</strong> — работа с DOM и хранением данных</li>
+                <li><strong>Telegram-бот</strong> — работа с API</li>
+                <li><strong>Простой сайт</strong> — HTML/CSS/JS</li>
+            </ul>
+            <p>Обязательно укажите ссылку на GitHub и живое демо проекта.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>💡 3. Навыки</h2>
+            <p>Разделите навыки на категории:</p>
+            <ul>
+                <li><strong>Языки:</strong> Python, JavaScript, Java, C++, SQL</li>
+                <li><strong>Фреймворки:</strong> React, Django, Spring, Flask</li>
+                <li><strong>Инструменты:</strong> Git, Docker, Linux, VS Code</li>
+                <li><strong>Базы данных:</strong> PostgreSQL, MySQL, MongoDB</li>
+            </ul>
+            <p>⚠️ <strong>НЕ пишите</strong> «уверенный пользователь ПК» или «коммуникабельность» — это не работает.</p>
+        </div>
+
+        <div class="content-block">
+            <h2>🏆 4. Достижения</h2>
+            <ul>
+                <li>Олимпиады по программированию</li>
+                <li>Хакатоны (даже участие ценится)</li>
+                <li>Волонтерство в IT-проектах</li>
+                <li>Онлайн-курсы: Stepik, Coursera, Яндекс.Практикум</li>
+                <li>Сертификаты и дипломы</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>✍️ 5. О себе</h2>
+            <p>2–3 предложения о том, кто вы, что хотите делать и почему именно эта компания. Избегайте штампов вроде «стремлюсь к развитию».</p>
+            <p><strong>Хороший пример:</strong> «Студент 3 курса, увлекаюсь веб-разработкой. Сделал 3 пет-проекта на React. Хочу развиваться в frontend-разработке и работать в продуктовой команде».</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Гайд по стажировкам в IT · Учебный проект по веб-аналитике</p>
+        <p>Автор: <a href="author.html">Аслиддин Кудратов</a> · <a href="contacts.html">Связаться</a></p>
+    </footer>
+
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(12345678, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/12345678" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Собеседование — IT-Гайд</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">🚀 IT-Стажировка</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="where.html">Где искать</a></li>
+                <li><a href="resume.html">Резюме</a></li>
+                <li><a href="interview.html">Собеседование</a></li>
+                <li><a href="author.html">Об авторе</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero" style="background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1600');">
+        <div class="hero-content">
+            <h1>Как пройти собеседование?</h1>
+            <p>Подготовка и прохождение технического интервью</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            <h2>📚 Этап 1: Подготовка (за 1–2 недели)</h2>
+            <ul>
+                <li>Повторите основы: структуры данных, алгоритмы, ООП</li>
+                <li>Решите 20–30 задач на <a href="https://leetcode.com" target="_blank" class="external-link">LeetCode</a> (уровень Easy)</li>
+                <li>Подготовьте рассказ о себе на 2 минуты</li>
+                <li>Изучите сайт компании и её продукты</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>🎯 Этап 2: Типовые вопросы</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>«Расскажите о себе»</h3>
+                    <p>Не пересказывайте резюме. Расскажите, почему вы в IT и чем горите.</p>
+                </div>
+                <div class="card">
+                    <h3>«Почему наша компания?»</h3>
+                    <p>Покажите, что изучили их продукты. Назовите конкретные проекты.</p>
+                </div>
+                <div class="card">
+                    <h3>«Ваши слабые стороны?»</h3>
+                    <p>Говорите о реальных вещах, но с планом улучшения. Например: «Пока слаб в SQL, но прохожу курс».</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h2>💻 Этап 3: Техническая часть</h2>
+            <ul>
+                <li>Вас попросят решить задачу на бумаге или в онлайн-редакторе</li>
+                <li><strong>Не молчите!</strong> Говорите вслух, как думаете</li>
+                <li>Если не знаете ответа — скажите: «Я не уверен, но думаю, что...»</li>
+                <li>Задавайте уточняющие вопросы — это показывает аналитическое мышление</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h2>🎯 Этап 4: Ваши вопросы работодателю</h2>
+            <p>Всегда готовьте вопросы — это показывает вашу заинтересованность:</p>
+            <ul>
+                <li>«Какие задачи будут у стажера?»</li>
+                <li>«Есть ли менторство?»</li>
+                <li>«Какие технологии используются в команде?»</li>
+                <li>«Как устроена работа в команде: Agile, Scrum?»</li>
+                <li>«Какие перспективы роста после стажировки?»</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Гайд по стажировкам в IT · Учебный проект по веб-аналитике</p>
+        <p>Автор: <a href="author.html">Аслиддин Кудратов</a> · <a href="contacts.html">Связаться</a></p>
+    </footer>
+
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(12345678, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/12345678" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+</body>
+</html>
+
+
+              <script>
+                              
+              </script>
+                        </body>
+                        </html>
+                    
